@@ -381,12 +381,6 @@ titleBar.Size     = UDim2.new(1, 0, 0, 44)
 titleBar.Position = UDim2.new(0, 0, 0, 0)
 corner(titleBar, 10)
 
--- Logo dot kuning
-local dot = F(titleBar, C.yellow, 4)
-dot.Size     = UDim2.new(0, 8, 0, 8)
-dot.Position = UDim2.new(0, 14, 0.5, -4)
-corner(dot, 4)
-
 local titleL = T(titleBar, "191 FREE", C.yellow, Enum.Font.GothamBold, Enum.TextXAlignment.Left, 4, 16)
 titleL.Size     = UDim2.new(0.5, 0, 1, 0)
 titleL.Position = UDim2.new(0, 30, 0, 0)
