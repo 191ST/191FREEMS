@@ -352,13 +352,16 @@ local function statRow(p, y, icon, lbl, valCol)
 	return vl
 end
 
+-- TOMBOL LEBIH KECIL (80% lebar, tinggi 32)
 local function actionBtn(p, y, txt, bg, txtC)
 	local w = F(p, bg or C.yellowD, 3)
-	w.Size     = UDim2.new(1, -32, 0, 38)
-	w.Position = UDim2.new(0, 16, 0, y)
+	w.Size     = UDim2.new(0.8, 0, 0, 32)
+	w.Position = UDim2.new(0.1, 0, 0, y)
 	corner(w, 6)
 	local b = B(w, txt, txtC or Color3.fromRGB(10,10,15), Enum.Font.GothamBold, 4)
 	b.Size = UDim2.new(1, 0, 1, 0)
+	b.TextSize = 12
+	b.TextScaled = false
 	return w, b
 end
 
@@ -431,7 +434,7 @@ statusCard.Size     = UDim2.new(1, -32, 0, 34)
 statusCard.Position = UDim2.new(0, 16, 0, 40)
 corner(statusCard, 6)
 
-lblStatus = T(statusCard, "Siap digunakan", C.txtM, Enum.Font.Gotham,
+lblStatus = T(statusCard, "191 FREE | SCRIPT READY", C.yellow, Enum.Font.GothamBold,
 	Enum.TextXAlignment.Center, 4, 12)
 lblStatus.Size     = UDim2.new(1, -8, 1, 0)
 lblStatus.Position = UDim2.new(0, 4, 0, 0)
@@ -464,10 +467,16 @@ msSubL.Position = UDim2.new(0.5, 0, 0, 0)
 
 line(content, 318)
 
--- Tombol
-local startW, startB = actionBtn(content, 328, "▶  START AUTO MASAK", C.yellowD, Color3.fromRGB(10,10,15))
-local stopW, stopB   = actionBtn(content, 328, "■  STOP AUTO MASAK", C.red, Color3.fromRGB(255,255,255))
+-- Tombol (posisi disesuaikan karena ukuran tombol lebih kecil)
+local startW, startB = actionBtn(content, 326, "▶ START", C.yellowD, Color3.fromRGB(10,10,15))
+local stopW, stopB   = actionBtn(content, 326, "■ STOP", C.red, Color3.fromRGB(255,255,255))
 stopW.Visible = false
+
+-- Atur posisi tombol agar sejajar (START di kiri, STOP di kanan)
+startW.Position = UDim2.new(0.1, 0, 0, 326)
+stopW.Position  = UDim2.new(0.55, 0, 0, 326)
+startW.Size = UDim2.new(0.35, 0, 0, 32)
+stopW.Size  = UDim2.new(0.35, 0, 0, 32)
 
 local function setRunUI(running)
 	startW.Visible = not running
